@@ -1,0 +1,21 @@
+// @polsia:user-owned
+
+model ServiceOrder {
+  id                       String    @id @default(cuid())
+  userId                   String
+  offerId                  String
+  offerName                String
+  scopeSnapshot            String
+  servicePeriodMonths      Int       @default(1)
+  amountCents              Int
+  currency                 String    @default("ZAR")
+  status                   String    @default("pending")
+  stripeSessionId          String?   @unique
+  stripeCheckoutUrl        String?
+  paidAt                   DateTime?
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  intake                   ServiceOrderIntake?
+
+  @@index([userId, createdAt])
+}

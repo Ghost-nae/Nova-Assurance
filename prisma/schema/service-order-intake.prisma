@@ -1,0 +1,15 @@
+// @polsia:user-owned
+
+model ServiceOrderIntake {
+  id                       String       @id @default(cuid())
+  serviceOrderId           String       @unique
+  userId                   String
+  journeyScope             String[]
+  platforms                String[]
+  syntheticTestData        String
+  accessPrerequisiteStatus String
+  createdAt                DateTime     @default(now())
+  serviceOrder             ServiceOrder @relation(fields: [serviceOrderId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
