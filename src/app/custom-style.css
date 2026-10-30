@@ -1,0 +1,1440 @@
+/* @polsia:user-owned — your custom global CSS: keyframes, animation classes, one-off global
+ * styles, self-hosted @font-face rules, and @import your own .css files. Prefer tw-animate-css
+ * for motion (animate-in, fade-in, slide-in-from-bottom-N, duration-*). The app's visual theme
+ * (colors, light/dark, type, radius, spacing) lives in brand-theme.css; globals.css holds the
+ * framework wiring and is not yours to edit. */
+
+/* Optional data-screen building blocks (src/components/custom/app-ui). User-owned like this
+ * file: keep, restyle, or delete the folder and this line together. */
+@import "../components/custom/app-ui/app-ui.css" layer(components);
+@import "./service-checkout.css";
+
+.tk-site {
+  --tk-ink: #173d38;
+  --tk-deep: #123832;
+  --tk-green: #247460;
+  --tk-mint: #eaf3eb;
+  --tk-paper: #f7f8f1;
+  --tk-line: #d1dfd5;
+  --tk-lime: #def079;
+  --tk-muted: #5f7970;
+  overflow: hidden;
+  background: var(--tk-paper);
+  color: var(--tk-ink);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.tk-site *,
+.tk-site *::before,
+.tk-site *::after {
+  box-sizing: border-box;
+}
+
+.tk-site a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tk-site a:focus-visible {
+  outline: 3px solid #63a48a;
+  outline-offset: 4px;
+}
+
+.tk-container,
+.tk-header-inner,
+.tk-hero-inner {
+  width: min(100% - 64px, 1216px);
+  margin-inline: auto;
+}
+
+.tk-header {
+  position: relative;
+  z-index: 5;
+  background: var(--tk-mint);
+  border-bottom: 1px solid rgb(23 61 56 / 10%);
+}
+
+.tk-header-inner {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.tk-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.tk-wordmark b {
+  margin-left: 3px;
+  font-weight: 400;
+  color: #56756a;
+}
+
+.tk-mark {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--tk-deep);
+}
+
+.tk-mark svg {
+  width: 29px;
+  stroke: var(--tk-lime);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tk-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 42px);
+  margin-left: auto;
+  margin-right: 18px;
+  color: #49655d;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tk-nav a,
+.tk-header-cta,
+.tk-text-link,
+.tk-agency-link,
+.tk-email,
+.tk-footer a {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.tk-nav a:hover,
+.tk-footer a:hover {
+  color: #29866c;
+}
+
+.tk-site .tk-text-link:hover,
+.tk-site .tk-agency-link:hover,
+.tk-site .tk-email:hover {
+  color: #29866c;
+}
+
+.tk-site .tk-header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 3px;
+  background: var(--tk-deep);
+  color: #f6f6e8;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tk-header-cta span,
+.tk-button span,
+.tk-agency-link span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.tk-site .tk-header-cta:hover,
+.tk-site .tk-button-primary:hover {
+  background: #285d50;
+}
+
+.tk-hero {
+  position: relative;
+  background: var(--tk-mint);
+  padding: 84px 0 101px;
+}
+
+.tk-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.91fr) minmax(410px, 1fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 104px);
+}
+
+.tk-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 570px;
+}
+
+.tk-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 22px;
+  color: #367460;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.085em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.tk-eyebrow-mark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #80a94e;
+}
+
+.tk-hero h1 {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(43px, 5.3vw, 69px);
+  font-weight: 550;
+  letter-spacing: -0.072em;
+  line-height: 1.045;
+}
+
+.tk-hero-lede {
+  max-width: 500px;
+  margin: 24px 0 0;
+  color: #48665d;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.tk-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-top: 31px;
+}
+
+.tk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  min-height: 51px;
+  padding: 0 19px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.tk-site .tk-button-primary {
+  background: var(--tk-deep);
+  color: #f6f6e8;
+}
+
+.tk-site .tk-text-link {
+  color: #345b4f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tk-hero-note {
+  margin: 27px 0 0;
+  color: #6b8278;
+  font-size: 10px;
+}
+
+.tk-hero-art {
+  position: relative;
+  min-height: 438px;
+  display: grid;
+  align-items: center;
+  padding: 25px 18px;
+}
+
+.tk-dots {
+  position: absolute;
+  inset: 0 2% 3% 4%;
+  background-image: radial-gradient(#71a795 1px, transparent 1px);
+  background-position: 0 0;
+  background-size: 15px 15px;
+  opacity: 0.48;
+  mask-image: linear-gradient(135deg, transparent 0%, #000 35%, #000 70%, transparent 100%);
+}
+
+.tk-review-window {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #d3ded3;
+  border-radius: 4px;
+  background: #fcfcf7;
+  box-shadow:
+    0 23px 58px rgb(30 74 59 / 14%),
+    0 4px 12px rgb(30 74 59 / 7%);
+  transform: rotate(-1deg);
+}
+
+.tk-window-bar {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid #e5e9df;
+  color: #688075;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.07em;
+}
+
+.tk-window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.tk-window-controls i {
+  width: 5px;
+  height: 5px;
+  border: 1px solid #8ca297;
+  border-radius: 50%;
+}
+
+.tk-window-corner {
+  font-size: 12px;
+}
+
+.tk-window-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 23px 25px 12px;
+}
+
+.tk-window-title span {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.tk-window-title small {
+  color: #71857a;
+  font-family: "Space Mono", monospace;
+  font-size: 7px;
+  text-align: right;
+}
+
+.tk-journey-path {
+  position: relative;
+  padding: 8px 25px 18px;
+}
+
+.tk-path-line {
+  position: absolute;
+  top: 25px;
+  bottom: 39px;
+  left: 38px;
+  width: 1px;
+  background: #cadbd0;
+}
+
+.tk-path-line span {
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #3c8f70;
+  border-radius: 50%;
+  background: #fcfcf7;
+}
+
+.tk-path-line span:nth-child(1) {
+  top: 0;
+}
+.tk-path-line span:nth-child(2) {
+  top: 50%;
+}
+.tk-path-line span:nth-child(3) {
+  bottom: 0;
+}
+
+.tk-journey-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 27px minmax(0, 1fr) 28px;
+  min-height: 67px;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e7ebe3;
+}
+
+.tk-journey-step:last-child {
+  border-bottom: 0;
+}
+
+.tk-journey-step > b {
+  z-index: 1;
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid #c8dbce;
+  border-radius: 50%;
+  background: #fcfcf7;
+  color: #27664f;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.tk-journey-step strong,
+.tk-journey-step small {
+  display: block;
+}
+
+.tk-journey-step strong {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tk-journey-step small {
+  margin-top: 4px;
+  color: #708177;
+  font-size: 9px;
+}
+
+.tk-journey-step em {
+  color: #87988c;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  font-style: normal;
+  text-align: right;
+}
+
+.tk-evidence-strip {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 25px 16px;
+  background: #eef4e9;
+}
+
+.tk-evidence-symbol {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #c7d8c8;
+  border-radius: 50%;
+  color: #427661;
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+}
+
+.tk-evidence-strip p {
+  margin: 0;
+  color: #63766d;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.tk-evidence-strip b {
+  color: var(--tk-ink);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.tk-paper-note {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  gap: 9px;
+  color: #57796a;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.tk-paper-note span {
+  color: #28664f;
+}
+
+.tk-note-top {
+  top: 14px;
+  right: 15px;
+  transform: rotate(4deg);
+}
+
+.tk-note-bottom {
+  bottom: 8px;
+  left: 17px;
+  transform: rotate(-4deg);
+}
+
+.tk-paper-note i {
+  font-style: normal;
+}
+
+.tk-intro-line {
+  border-bottom: 1px solid var(--tk-line);
+  background: #f4f7ed;
+}
+
+.tk-intro-inner {
+  display: flex;
+  min-height: 81px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.tk-intro-inner > span {
+  color: #55786a;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.09em;
+}
+
+.tk-intro-inner p {
+  margin: 0;
+  color: #2e5349;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.tk-failure {
+  padding: 102px 0 108px;
+  background: var(--tk-deep);
+  color: #f3f5e9;
+}
+
+.tk-failure-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: clamp(60px, 12vw, 178px);
+}
+
+.tk-eyebrow-light {
+  color: #a1c9a9;
+}
+
+.tk-failure-heading h2,
+.tk-section-head h2,
+.tk-approach-head h2,
+.tk-contact h2 {
+  margin: 0;
+  font-size: clamp(34px, 4.1vw, 51px);
+  font-weight: 520;
+  letter-spacing: -0.07em;
+  line-height: 1.1;
+}
+
+.tk-failure-heading > p:last-child {
+  max-width: 360px;
+  margin: 22px 0 0;
+  color: #b2c6b9;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.tk-failure-list {
+  margin-top: 4px;
+}
+
+.tk-failure-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 13px;
+  align-items: start;
+  gap: 15px;
+  padding: 19px 0 22px;
+  border-top: 1px solid rgb(225 239 225 / 21%);
+}
+
+.tk-failure-row:last-child {
+  border-bottom: 1px solid rgb(225 239 225 / 21%);
+}
+
+.tk-index {
+  padding-top: 2px;
+  color: #bad97e;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+}
+
+.tk-failure-row h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 550;
+  letter-spacing: -0.035em;
+}
+
+.tk-failure-row p {
+  max-width: 400px;
+  margin: 6px 0 0;
+  color: #adc2b5;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.tk-failure-stroke {
+  width: 9px;
+  height: 9px;
+  margin-top: 4px;
+  border: 1px solid #84b696;
+  border-radius: 50%;
+}
+
+.tk-coverage {
+  padding-top: 112px;
+  padding-bottom: 108px;
+}
+
+.tk-section-head {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 0.54fr);
+  align-items: end;
+  gap: 80px;
+  margin-bottom: 51px;
+}
+
+.tk-section-head .tk-eyebrow,
+.tk-approach-head .tk-eyebrow,
+.tk-contact .tk-eyebrow {
+  margin-bottom: 20px;
+}
+
+.tk-section-summary {
+  max-width: 425px;
+  margin: 0 0 3px;
+  color: #62786d;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.tk-coverage-list {
+  border-top: 1px solid #bfd0c4;
+}
+
+.tk-coverage-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px minmax(205px, 0.78fr) minmax(240px, 1fr);
+  align-items: baseline;
+  gap: 22px;
+  padding: 22px 0 23px;
+  border-bottom: 1px solid #d6e0d5;
+}
+
+.tk-coverage-number {
+  color: #4f866c;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+}
+
+.tk-coverage-row h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.tk-coverage-row p {
+  max-width: 520px;
+  margin: 0;
+  color: #667b71;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.tk-coverage-footnote {
+  margin: 17px 0 0 80px;
+  color: #718279;
+  font-size: 10px;
+}
+
+.tk-approach {
+  padding: 99px 0 105px;
+  background: #e9f1e7;
+}
+
+.tk-approach-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: 50px;
+}
+
+.tk-approach-head .tk-eyebrow {
+  align-self: flex-start;
+  margin-top: 9px;
+}
+
+.tk-approach-head h2 {
+  max-width: 590px;
+  margin-right: auto;
+}
+
+.tk-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #bdcec0;
+}
+
+.tk-step {
+  min-height: 220px;
+  padding: 22px 36px 0 0;
+}
+
+.tk-step + .tk-step {
+  padding-left: 31px;
+  border-left: 1px solid #bdcec0;
+}
+
+.tk-step-index {
+  color: #36735f;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.tk-step-index i {
+  color: #71887b;
+  font-style: normal;
+}
+
+.tk-step h3 {
+  max-width: 245px;
+  margin: 33px 0 11px;
+  font-size: 19px;
+  font-weight: 550;
+  letter-spacing: -0.055em;
+  line-height: 1.25;
+}
+
+.tk-step p {
+  max-width: 310px;
+  margin: 0;
+  color: #60796d;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.tk-agency {
+  padding: 93px 0 100px;
+  background: #163c37;
+  color: #eff4e8;
+}
+
+.tk-agency-layout {
+  display: grid;
+  grid-template-columns: 0.52fr 1fr 0.78fr;
+  align-items: start;
+  gap: clamp(38px, 6vw, 88px);
+}
+
+.tk-agency-aside {
+  padding-top: 6px;
+}
+
+.tk-agency-asterisk {
+  display: block;
+  margin-bottom: 21px;
+  color: var(--tk-lime);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.tk-agency-aside p {
+  max-width: 160px;
+  margin: 0;
+  color: #a9c7b2;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+.tk-agency-copy h2 {
+  max-width: 500px;
+  margin: 0;
+  font-size: clamp(31px, 3.6vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 1.12;
+}
+
+.tk-agency-copy > p {
+  max-width: 460px;
+  margin: 22px 0 0;
+  color: #bdd0c2;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.tk-site .tk-agency-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #92b49d;
+  color: #f0f4e8;
+  font-size: 11px;
+  font-weight: 550;
+}
+
+.tk-site .tk-agency-link:hover {
+  border-color: var(--tk-lime);
+  color: var(--tk-lime);
+}
+
+.tk-agency-index {
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgb(226 239 226 / 24%);
+}
+
+.tk-agency-index > li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  column-gap: 10px;
+  padding: 16px 0 14px;
+  border-bottom: 1px solid rgb(226 239 226 / 24%);
+}
+
+.tk-agency-index span {
+  grid-row: span 2;
+  padding-top: 2px;
+  color: #b7d587;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+}
+
+.tk-agency-index p {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 550;
+}
+
+.tk-agency-index small {
+  margin-top: 3px;
+  color: #a9c3b2;
+  font-size: 9px;
+}
+
+.tk-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 50px;
+  padding-top: 93px;
+  padding-bottom: 96px;
+}
+
+.tk-contact-copy {
+  max-width: 720px;
+}
+
+.tk-contact h2 {
+  max-width: 680px;
+}
+
+.tk-contact-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+  padding-bottom: 3px;
+}
+
+.tk-contact-action .tk-button {
+  min-width: 162px;
+  justify-content: space-between;
+}
+
+.tk-site .tk-email {
+  color: #61796e;
+  font-size: 9px;
+}
+
+.tk-footer {
+  border-top: 1px solid var(--tk-line);
+  background: #eff3e9;
+}
+
+.tk-footer-inner {
+  display: flex;
+  min-height: 83px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.tk-footer .tk-wordmark {
+  font-size: 11px;
+}
+
+.tk-footer .tk-mark {
+  width: 29px;
+  height: 29px;
+}
+
+.tk-footer .tk-mark svg {
+  width: 24px;
+}
+
+.tk-footer-inner > p,
+.tk-footer-inner > span,
+.tk-footer-inner > a:not(.tk-wordmark) {
+  margin: 0;
+  color: #667b70;
+  font-size: 9px;
+}
+
+@media (max-width: 960px) {
+  .tk-nav {
+    gap: 19px;
+    margin-right: 0;
+  }
+
+  .tk-hero-inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
+    gap: 34px;
+  }
+
+  .tk-hero-art {
+    min-height: 390px;
+    padding-inline: 4px;
+  }
+
+  .tk-failure-layout {
+    gap: 60px;
+  }
+
+  .tk-agency-layout {
+    grid-template-columns: 0.42fr 1fr 0.76fr;
+    gap: 34px;
+  }
+
+  .tk-footer-inner {
+    flex-wrap: wrap;
+    padding-block: 19px;
+  }
+}
+
+@media (max-width: 720px) {
+  .tk-container,
+  .tk-header-inner,
+  .tk-hero-inner {
+    width: min(100% - 40px, 560px);
+  }
+
+  .tk-header-inner {
+    min-height: 68px;
+    gap: 12px;
+  }
+
+  .tk-wordmark {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .tk-mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tk-nav {
+    display: none;
+  }
+
+  .tk-header-cta {
+    min-height: 38px;
+    gap: 8px;
+    padding-inline: 11px;
+    font-size: 9px;
+  }
+
+  .tk-hero {
+    padding: 61px 0 59px;
+  }
+
+  .tk-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .tk-eyebrow {
+    margin-bottom: 17px;
+    font-size: 8px;
+  }
+
+  .tk-hero h1 {
+    max-width: 560px;
+    font-size: clamp(43px, 11vw, 57px);
+    letter-spacing: -0.07em;
+  }
+
+  .tk-hero-lede {
+    margin-top: 19px;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .tk-hero-actions {
+    gap: 18px;
+    margin-top: 25px;
+  }
+
+  .tk-button {
+    min-height: 47px;
+    gap: 15px;
+    padding-inline: 15px;
+    font-size: 11px;
+  }
+
+  .tk-text-link {
+    font-size: 10px;
+  }
+
+  .tk-hero-note {
+    margin-top: 19px;
+    font-size: 9px;
+  }
+
+  .tk-hero-art {
+    min-height: 333px;
+    margin-inline: -3px;
+    padding: 23px 0;
+  }
+
+  .tk-dots {
+    inset: 0 -1% 3% 4%;
+    background-size: 13px 13px;
+  }
+
+  .tk-review-window {
+    width: calc(100% - 16px);
+    transform: rotate(-0.6deg);
+  }
+
+  .tk-window-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 17px 8px;
+  }
+
+  .tk-window-title small {
+    text-align: left;
+  }
+
+  .tk-journey-path {
+    padding: 6px 17px 11px;
+  }
+
+  .tk-path-line {
+    left: 30px;
+    top: 23px;
+    bottom: 31px;
+  }
+
+  .tk-journey-step {
+    min-height: 59px;
+    grid-template-columns: 26px minmax(0, 1fr) 22px;
+    gap: 8px;
+  }
+
+  .tk-journey-step > b {
+    width: 25px;
+    height: 25px;
+  }
+
+  .tk-journey-step strong {
+    font-size: 10px;
+  }
+
+  .tk-journey-step small {
+    font-size: 8px;
+  }
+
+  .tk-evidence-strip {
+    padding: 12px 17px;
+  }
+
+  .tk-paper-note {
+    font-size: 7px;
+  }
+
+  .tk-note-top {
+    top: 2px;
+    right: 9px;
+  }
+
+  .tk-note-bottom {
+    bottom: 0;
+    left: 8px;
+  }
+
+  .tk-intro-inner {
+    min-height: 80px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .tk-intro-inner > span {
+    font-size: 7px;
+  }
+
+  .tk-intro-inner p {
+    font-size: 11px;
+  }
+
+  .tk-failure {
+    padding: 68px 0 73px;
+  }
+
+  .tk-failure-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .tk-failure-heading h2,
+  .tk-section-head h2,
+  .tk-approach-head h2,
+  .tk-contact h2 {
+    font-size: clamp(34px, 9vw, 43px);
+  }
+
+  .tk-failure-heading > p:last-child {
+    margin-top: 16px;
+    font-size: 12px;
+  }
+
+  .tk-failure-row {
+    grid-template-columns: 29px minmax(0, 1fr) 10px;
+    gap: 9px;
+    padding: 17px 0 18px;
+  }
+
+  .tk-failure-row h3 {
+    font-size: 12px;
+  }
+
+  .tk-failure-row p {
+    font-size: 10px;
+  }
+
+  .tk-coverage {
+    padding-top: 73px;
+    padding-bottom: 73px;
+  }
+
+  .tk-section-head {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .tk-section-summary {
+    font-size: 12px;
+  }
+
+  .tk-coverage-row {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 8px 12px;
+    padding: 17px 0 18px;
+  }
+
+  .tk-coverage-row h3 {
+    font-size: 12px;
+  }
+
+  .tk-coverage-row p {
+    grid-column: 2;
+    font-size: 10px;
+  }
+
+  .tk-coverage-footnote {
+    margin: 14px 0 0 42px;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+
+  .tk-approach {
+    padding: 69px 0 75px;
+  }
+
+  .tk-approach-head {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .tk-approach-head .tk-eyebrow {
+    margin-top: 0;
+  }
+
+  .tk-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .tk-step,
+  .tk-step + .tk-step {
+    min-height: 0;
+    padding: 19px 0 21px;
+    border-left: 0;
+    border-bottom: 1px solid #bdcec0;
+  }
+
+  .tk-step h3 {
+    max-width: none;
+    margin: 17px 0 7px;
+    font-size: 17px;
+  }
+
+  .tk-step p {
+    max-width: 470px;
+    font-size: 10px;
+  }
+
+  .tk-agency {
+    padding: 69px 0 73px;
+  }
+
+  .tk-agency-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .tk-agency-aside {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .tk-agency-asterisk {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .tk-agency-aside p {
+    max-width: none;
+    font-size: 7px;
+  }
+
+  .tk-agency-copy h2 {
+    font-size: clamp(31px, 8.2vw, 39px);
+  }
+
+  .tk-agency-copy > p {
+    margin-top: 15px;
+    font-size: 11px;
+  }
+
+  .tk-agency-index {
+    margin-top: 2px;
+  }
+
+  .tk-contact {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    padding-top: 69px;
+    padding-bottom: 70px;
+  }
+
+  .tk-contact h2 {
+    font-size: clamp(34px, 8.9vw, 43px);
+  }
+
+  .tk-footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding-block: 19px;
+  }
+
+  .tk-footer .tk-wordmark {
+    grid-column: 1 / -1;
+  }
+
+  .tk-footer-inner > p {
+    grid-column: 1 / -1;
+    font-size: 8px;
+  }
+
+  .tk-footer-inner > a:not(.tk-wordmark),
+  .tk-footer-inner > span {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .tk-container,
+  .tk-header-inner,
+  .tk-hero-inner {
+    width: min(100% - 32px, 560px);
+  }
+
+  .tk-wordmark {
+    font-size: 11px;
+  }
+
+  .tk-header-cta {
+    gap: 5px;
+    padding-inline: 8px;
+    font-size: 8px;
+  }
+
+  .tk-hero h1 {
+    font-size: 42px;
+  }
+
+  .tk-hero-actions {
+    gap: 13px;
+  }
+
+  .tk-journey-step small {
+    max-width: 195px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-site *,
+  .tk-site *::before,
+  .tk-site *::after {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+  }
+}
+
+/* font:add Plus Jakarta Sans — start */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-400-normal-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-400-normal-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-500-normal-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-500-normal-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-600-normal-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-600-normal-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-700-normal-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-700-normal-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* font:add Plus Jakarta Sans — end */
+
+/* font:add Space Mono — start */
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/space-mono/space-mono-400-normal-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/space-mono/space-mono-400-normal-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/space-mono/space-mono-700-normal-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/space-mono/space-mono-700-normal-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* font:add Space Mono — end */

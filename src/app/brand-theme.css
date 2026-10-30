@@ -1,0 +1,117 @@
+/* @polsia:user-owned — the app's visual theme. Edit freely; write it, don't tune it.
+ *
+ * globals.css imports this file LAST and keeps its own fallback inside
+ * `@layer base`, so any unlayered `:root` / `.dark` rule written here wins the
+ * cascade without `!important`. An empty file leaves the neutral, achromatic
+ * fallback in place — which is the "unfinished" look, not a design.
+ *
+ * Every semantic role is independently settable in each mode (light and dark do
+ * NOT have to be the same hue, and accent does not have to be a tint of primary):
+ *   --background / --foreground, --card / --card-foreground,
+ *   --popover / --popover-foreground, --primary / --primary-foreground,
+ *   --secondary / --secondary-foreground, --muted / --muted-foreground,
+ *   --accent / --accent-foreground, --destructive, --border, --input, --ring,
+ *   the optional --brand-50..900 ramp, --elevation-1..3 and --shadow-brand-color.
+ *
+ * Typography: --font-body, --font-display (load the files first — see
+ * AGENTS.md "Fonts"), plus --text-display / --text-h1 … --text-caption and their
+ * --text-<step>--line-height / --font-weight / --letter-spacing companions.
+ * Shape and density: --radius (drives the ramp) or individual
+ * --radius-sm/md/lg/xl/2xl, --spacing-stack/block/gutter/section/section-lg,
+ * --container-page. A `@theme { … }` block here can also add or replace
+ * Tailwind utility tokens (new colors, sizes, shadows).
+ *
+ * Shape of a theme — the values are placeholders, not a suggested look. Derive
+ * them from the brief and the references you inspected; nothing in this starter
+ * is a customer choice. The fallback page color is not a suggestion either —
+ * pick the background from the references, not a default off-white:
+ *
+ *   :root {
+ *     --background: <page>; --foreground: <text on page>; --card: <surface>;
+ *     --primary: <action>; --primary-foreground: <text on action>;
+ *     --accent: <secondary emphasis>; --accent-foreground: <text on accent>;
+ *     --border: <hairline>; --ring: <focus>;
+ *     --font-display: "<display family>", <fallback stack>;
+ *     --font-body: "<body family>", <fallback stack>;
+ *   }
+ *   .dark { …the same roles; hues may differ from light mode… }
+ *
+ * Load a Google Fonts family you chose with `npm run font:add -- "<Family>" 400 700`
+ * (self-hosted, CSP-safe); if it fails, fix it — never swap in another family.
+ *
+ * Set the matching foreground for every surface you change and check contrast in
+ * both modes; nothing here validates colors for you.
+ */
+
+:root {
+  --background: #f7f8f1;
+  --foreground: #173d38;
+  --card: #ffffff;
+  --card-foreground: #173d38;
+  --popover: #ffffff;
+  --popover-foreground: #173d38;
+  --primary: #174940;
+  --primary-foreground: #f8f8ed;
+  --secondary: #e6f0e8;
+  --secondary-foreground: #173d38;
+  --muted: #edf1e9;
+  --muted-foreground: #59736b;
+  --accent: #dff17b;
+  --accent-foreground: #173d38;
+  --destructive: #ab4b3d;
+  --border: #d5e0d6;
+  --input: #d5e0d6;
+  --ring: #277365;
+  --radius: 0.75rem;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --brand-50: #f0f6ee;
+  --brand-100: #dcecdf;
+  --brand-200: #c0deca;
+  --brand-300: #92c7ad;
+  --brand-400: #5eaa8f;
+  --brand-500: #328a71;
+  --brand-600: #24715f;
+  --brand-700: #1c5b4f;
+  --brand-800: #174940;
+  --brand-900: #123a34;
+  --elevation-1: rgb(21 59 51 / 7%);
+  --elevation-2: rgb(21 59 51 / 12%);
+  --elevation-3: rgb(21 59 51 / 18%);
+  --shadow-brand-color: rgb(39 115 101 / 30%);
+}
+
+.dark {
+  --background: #122a28;
+  --foreground: #eef4e8;
+  --card: #1b3834;
+  --card-foreground: #eef4e8;
+  --popover: #1b3834;
+  --popover-foreground: #eef4e8;
+  --primary: #b8e3bd;
+  --primary-foreground: #153530;
+  --secondary: #244541;
+  --secondary-foreground: #eef4e8;
+  --muted: #244541;
+  --muted-foreground: #b0c8bb;
+  --accent: #deef82;
+  --accent-foreground: #173d38;
+  --destructive: #f09b8d;
+  --border: rgb(238 244 232 / 14%);
+  --input: rgb(238 244 232 / 18%);
+  --ring: #8ac9a2;
+  --brand-50: #eff5e8;
+  --brand-100: #d9e9d4;
+  --brand-200: #b9d8bd;
+  --brand-300: #8ac9a2;
+  --brand-400: #69b390;
+  --brand-500: #4a9c7c;
+  --brand-600: #398064;
+  --brand-700: #2c6753;
+  --brand-800: #204c40;
+  --brand-900: #16382f;
+  --elevation-1: rgb(0 0 0 / 20%);
+  --elevation-2: rgb(0 0 0 / 30%);
+  --elevation-3: rgb(0 0 0 / 40%);
+  --shadow-brand-color: rgb(105 179 144 / 24%);
+}
